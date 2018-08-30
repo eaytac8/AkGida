@@ -1,0 +1,226 @@
+﻿@using AkGida_MyInfo.ViewModel
+@using AkGida_MyInfo.Models
+@model ViewModels
+@{
+    ViewBag.Title = "Departmanlar";
+    /*Layout = "~/Views/Shared/_Layout.cshtml";*/
+}
+
+<!-- CORE CSS -->
+<link href="~/Content/User/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="~/Content/User/assets/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/User/assets/css/layout.css" rel="stylesheet" type="text/css" />
+
+<!-- SWIE SLIDER -->
+<link href="~/Content/User/assets/plugins/slider.swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css" />
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+<!-- JAVASCRIPT FILES -->
+<script type="text/javascript">var plugin_path = '/Content/User/assets/plugins/';</script>
+@*<script type="text/javascript" src="~/Content/User/assets/plugins/jquery/jquery-2.1.4.min.js"></script>*@
+
+<script type="text/javascript" src="~/Content/User/assets/js/scripts.js"></script>
+
+<!-- STYLESWITCHER - REMOVE -->
+<script async type="text/javascript" src="~/Content/User/assets/plugins/styleswitcher/styleswitcher.js"></script>
+
+
+
+<style>
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 3px;
+        opacity: 0.3;
+    }
+
+    .grid-item {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(24, 193, 182);
+        padding: 20px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    table > tr > td {
+        border: 1px solid rgb(24, 193, 182) !important;
+        padding: 6px;
+    }
+
+    table > tr > th {
+        border: 1px solid rgb(24, 193, 182) !important;
+        align-content: center;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+</style>
+
+<h3 align="center" style="color:black">Departmanlar</h3>
+
+<!-- TOGGLES -->
+<div class="toggle toggle-transparent toggle-bordered-full margin-top-5" style="color:black">
+
+    @foreach (Departments item in Model.Departmanlarim)
+    {
+        <div class="toggle" align="center">
+            <!-- toggle -->
+            <label style="color:black">@item.DepartmentName</label>
+            <div id=@item.DepartmentID.ToString() class="toggle-content">
+                <table class="table">
+                    <tr>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Corbus</th>
+                        <th>Dahili No</th>
+                        <th>Telefon</th>
+                        <th>E-Posta</th>
+                        <th>Departman</th>
+                        <th>Şube</th>
+                        <th>Doğum Tarihi</th>
+                    </tr>
+
+                    @foreach (Personels item1 in Model.Personellerim)
+                    {
+                        if (item1.DepartmentID == item.DepartmentID)
+                        {
+                            <tr>
+                                <td>@item1.PersonelName</td>
+                                <td>@item1.PersonelSurname</td>
+                                <td>@item1.Corbus</td>
+                                <td>@item1.PersonelDahiliNo</td>
+                                <td>@item1.PersonelTel</td>
+                                <td>@item1.PersonelEposta</td>
+                                <td>@item1.Departments.DepartmentName</td>
+                                <td>@item1.Departments.Companies.CompanyName</td>
+                                <td>@item1.Birthday</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div><!-- /toggle -->
+    }
+
+</div>
+
+
+<script>
+
+    $("label").click(function (event) {
+        $(".toggle-content").hide();
+        $(event.target).next(".toggle-content").toggle("slow");
+    });
+
+</script>
+
+<!-- /TOGGLES -->
+
+
+<table id="Liste" style="width:100%; display:none;"></table>
+
+
+<div class="container text-center">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="color:black">Günün Menüsü</h3>
+            @foreach (Menu m_item in Model.Menulerim)
+            {
+                <frame>
+                    <div class="grid-item">
+                        <h5>@m_item.Corba</h5>
+                        <h5>@m_item.AnaYemek</h5>
+                        <h5>@m_item.Diyet</h5>
+                        <h5>@m_item.PilavMakarna</h5>
+                        <h5>@m_item.Tatli</h5>
+                        <h5>@m_item.Meyve</h5>
+                        <h5>@m_item.Salata</h5>
+                    </div>
+                </frame>
+
+            }
+        </div>
+
+        <div class="col-md-8">
+            <h3 style="color:black">Duyurular</h3>
+
+            <div class="blog-post-item">
+                <!-- OWL SLIDER -->
+                <div class="owl-carousel buttons-autohide controlls-over" data-plugin-options='{"items": 1, "autoPlay": 3000, "autoHeight": false, "navigation": true, "pagination": true, "transitionStyle":"fadeUp", "progressBar":"false"}'>
+
+                    @foreach (Duyurular d_item in Model.Duyurularim)
+                    {
+                        <div>
+                            <img style="max-width:750px;height:360px" class="img-responsive" src="@Url.Content(d_item.ResimYolu)" alt="">
+                            <h5>@d_item.Baslik</h5>
+                            <p>@d_item.Icerik</p><br />
+                        </div>
+                    }
+                </div>
+                <!-- /OWL SLIDER -->
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- -->
+<section>
+    <div class="container">
+
+        <header class="text-center">
+            <h3 class="nomargin" style="color:black">Servis Bilgileri</h3>
+        </header>
+
+        <div class="divider divider-center">
+            <!-- divider -->
+            <i class="fa fa-chevron-down"></i>
+        </div>
+
+        <ul class="process-steps nav nav-tabs nav-justified margin-top-40">
+
+            @{int i = 1;}
+
+            @foreach (Servis item in Model.Servislerim)
+            {
+                <li>
+                    <a href=@("#servis"+item.ServisID.ToString()) data-toggle="tab">@i</a>
+                    <h5>@item.Guzergah</h5>
+                </li>
+                i++;
+            }
+
+        </ul>
+
+        <div class="tab-content margin-top-30" align="center">
+            @{int _sayac = 1; }
+            @foreach (Servis item in Model.Servislerim)
+            {
+            <div class="tab-pane" id=@("servis"+item.ServisID.ToString()) style="color:black">
+                <b>@item.Guzergah</b><br /><br />
+                <b>Şofor: </b>@item.SoforAdi @item.SoforSoyadi <br />
+                <b>Telefon: </b> @item.Telefon<br />
+                <b>Plaka: </b>@item.Plaka
+            </div>
+                _sayac++;
+            }
+        </div>
+
+    </div>
+</section>
+<!-- / -->
+
+
+<!-- SWIPE SLIDER -->
+<script type="text/javascript" src="~/Content/User/assets/plugins/slider.swiper/dist/js/swiper.min.js"></script>
