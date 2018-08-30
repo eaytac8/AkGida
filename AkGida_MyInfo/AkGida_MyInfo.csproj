@@ -270,9 +270,6 @@
     <Compile Include="Models\Personels.cs">
       <DependentUpon>MyInfoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Role.cs">
-      <DependentUpon>MyInfoDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Servis.cs">
       <DependentUpon>MyInfoDB.tt</DependentUpon>
     </Compile>
@@ -285,16 +282,10 @@
     <Compile Include="Models\Thanks.cs">
       <DependentUpon>MyInfoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Users.cs">
-      <DependentUpon>MyInfoDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Weddings.cs">
       <DependentUpon>MyInfoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\YeniUrun.cs">
-      <DependentUpon>MyInfoDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Yetkiler.cs">
       <DependentUpon>MyInfoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -7051,6 +7042,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_BlankAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

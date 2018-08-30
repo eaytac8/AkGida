@@ -38,12 +38,6 @@ public partial class AkGida_MyInfoEntities : DbContext
 
     public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 
-    public virtual DbSet<Role> Role { get; set; }
-
-    public virtual DbSet<Users> Users { get; set; }
-
-    public virtual DbSet<Yetkiler> Yetkiler { get; set; }
-
     public virtual DbSet<YeniUrun> YeniUrun { get; set; }
 
     public virtual DbSet<Menu> Menu { get; set; }

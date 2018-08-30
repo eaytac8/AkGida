@@ -1,9 +1,9 @@
 ﻿@model AkGida_MyInfo.Models.IndexViewModel
 @{
     ViewBag.Title = "Yönet";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
@@ -30,13 +30,13 @@
         </dd>
         @*
             Telefon Numaraları, iki öğeli kimlik doğrulama sisteminde ikinci öğe olarak kullanılabilir.
-             
+
              Bu ASP.NET uygulamasını SMS kullanarak iki öğeli kimlik doğrulamasını destekleyecek şekilde
                 ayarlama konusunda ayrıntılı bilgi için <a href="https://go.microsoft.com/fwlink/?LinkId=403804">bu makaleye</a> bakın.
-             
+
              İki öğeli kimlik doğrulamayı ayarladıktan sonra aşağıdaki blokları açıklama durumundan çıkarın
         *@
-        @*  
+        @*
             <dt>Telefon Numarası:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "Yok")
